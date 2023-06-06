@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>{{tituloAccion}} Empleado</h1>
+<div mat-dialog-content>
+    <form [formGroup]="formEmpleado">
+        <mat-grid-list cols="1" rowHeight="80px">
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre Empleado</mat-label>
+                    <input matInput formControlName="nombreEmpleado" autocomplete="off">
+                  </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Apellidop Empleado</mat-label>
+                    <input matInput formControlName="apellidoEmpleado" autocomplete="off">
+                  </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Tipo de Documento</mat-label>
+                    <input matInput formControlName="tipoDocumento" autocomplete="off">
+                  </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Numero de Documento</mat-label>
+                    <input matInput formControlName="numeroDocumento" autocomplete="off" type="number">
+                  </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Areas</mat-label>
+                <mat-select formControlName="listaDeAreas">
+                  <mat-option *ngFor="let item of listaAreas" [value]="item.idArea">
+                    {{item.nombreArea}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Fecha de Contrato</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="fechaContrato">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+    </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close color="warn">Close</button>
+  <button mat-raised-button  color="primary"
+   (click)="AddEditEmpleado()"
+   [disabled]="formEmpleado.invalid"
+   >{{botonAccion}}</button>
+</div>
