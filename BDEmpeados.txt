@@ -1,0 +1,47 @@
+
+create database DBEmpleados
+
+use DBEmpleados
+
+create table Area(
+IdArea int primary key identity,
+NombreArea varchar(50),
+FechaCreacion datetime default getdate()
+)
+
+
+create table Empleados(
+IdEmpleado int primary key identity,
+NombreEmpleado varchar(50),
+ApellidoEmpleado varchar(50),
+TipoDocumento varchar,
+NumeroDocumento varchar(50),
+IdArea int references Area(IdArea),
+FechaContrato datetime,
+FechaCreacionEmpleado datetime default getdate()
+)
+
+
+insert into Area(NombreArea) values
+('Equipo Administrativo'),
+('Equipo Comercial'),
+('Equipo de Desarrollo'),
+('Equipo de Soporte'),
+('Equipo de Oficios Varios')
+
+insert into Empleados(NombreEmpleado,ApellidoEmpleado,TipoDocumento,NumeroDocumento,IdArea,FechaContrato) values
+('John','Perez','c','12345667',1,getdate()),
+('Alexander','Zapata','c','865544131467',2,getdate()),
+('Orlando','Henao','c','175426985',3,getdate()),
+('Cesar','Castaño','c','6544265875',4,getdate()),
+('Andrea','Lopez','c','7864231',5,getdate())
+
+
+
+use DBEmpleados
+
+insert into Empleados(NombreEmpleado,ApellidoEmpleado,TipoDocumento,NumeroDocumento,IdArea,FechaContrato) values
+('marcela','cano','c','145667',1,getdate())
+
+
+
